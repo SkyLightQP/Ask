@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar is-light" role="navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="#">
+            <a class="navbar-item" href="/">
                 Ask<i>!</i>
             </a>
 
@@ -17,9 +17,9 @@
             </div>
 
             <div class="navbar-end">
-                <a class="navbar-item">
+                <nuxt-link class="navbar-item" to="login">
                     <i class="fas fa-sign-in-alt"></i>
-                </a>
+                </nuxt-link>
             </div>
         </div>
     </nav>
