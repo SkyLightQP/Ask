@@ -1,0 +1,26 @@
+{
+  "name": "ask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "nuxt build",
+    "build:backend": "tsc",
+    "start": "cross-env NODE_ENV=production node ./dist/app.js",
+    "dev": "tsc && cross-env NODE_ENV=development node ./dist/app.js",
+    "generate": "nuxt generate"
+  },
+  "author": "",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "@nuxtjs/bulma": "^1.2.2",
+    "@types/node": "^10.12.18",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "log4js": "^3.0.6",
+    "node-sass": "^4.11.0",
+    "nuxt": "^2.3.4",
+    "sass-loader": "^7.1.0"
+  }
+}
