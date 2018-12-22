@@ -18,7 +18,7 @@
 
             <div class="navbar-end">
                 <a class="navbar-item">
-                    로그인
+                    <i class="fas fa-sign-in-alt"></i>
                 </a>
             </div>
         </div>

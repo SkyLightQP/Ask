@@ -2,13 +2,15 @@
     <section>
         <NavigationBar/>
         <nuxt/>
+        <Footer/>
     </section>
 </template>
 
 <script>
     import NavigationBar from "../components/NavigationBar";
+    import Footer from "./Footer";
     export default {
         name: "default",
-        components: {NavigationBar}
+        components: {Footer, NavigationBar}
     }
 </script>
