@@ -1,14 +1,11 @@
 <template>
-    <section>
-        <NavigationBar/>
-        <nuxt/>
-    </section>
+    <NavigationBar/>
 </template>
 
 <script>
     import NavigationBar from "../components/NavigationBar";
     export default {
-        name: "default",
+        name: "Header",
         components: {NavigationBar}
     }
 </script>
