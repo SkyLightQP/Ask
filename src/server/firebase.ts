@@ -4,9 +4,10 @@ import 'firebase/firestore';
 
 import config from "./config";
 
-import {logger, express} from "./app";
+import app from "./app";
 
-const router = express.Router();
+const router = app.express.Router();
+const logger = app.logger;
 
 firebase.initializeApp(config);
 const db = firebase.firestore();
@@ -30,12 +31,11 @@ router.post('/:createdAt/:comment', (req, res) => {
     const {
         createdAt,
         comment
-    } = req.params
+    } = req.params;
 
-    sendQuestion(createdAt, comment)
-    res.sendStatus(200).end()
-})
-
+    sendQuestion(createdAt, comment);
+    res.sendStatus(200).end();
+});
 
 export default {
     firebase,

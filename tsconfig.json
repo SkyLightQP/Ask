@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "rootDir": "src/server/",
-    "outDir": "dist/server/",
+    "rootDir": "src/server",
+    "outDir": "dist/server",
     "esModuleInterop": true
   }
 }

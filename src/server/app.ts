@@ -28,7 +28,7 @@ app.use(nuxt.render);
 const port = 3000;
 app.listen(port, () => logger.info(`Http server listening on ${port}`));
 
-export {
+export default {
     logger,
     express
-}
+};
