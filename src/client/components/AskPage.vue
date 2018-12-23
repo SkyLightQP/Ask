@@ -24,7 +24,7 @@
         name: "AskPage",
         methods: {
             async send() {
-                await axios.post(`http://localhost:3000/question/2018-01-01/${message}`)
+                await axios.post(`http://localhost:3000/question/${this.message}`);
             }
         }
     }

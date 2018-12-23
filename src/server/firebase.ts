@@ -4,18 +4,20 @@ import 'firebase/firestore';
 
 import config from './config';
 
-import app from './app';
+import { express, logger } from './app';
 
-const router = app.express.Router();
-const logger = app.logger;
+import moment from 'moment';
+
+const router = express.Router();
 
 firebase.initializeApp(config);
 const db = firebase.firestore();
 
-const sendQuestion = (createdAt: String, comment: String) => {
+const sendQuestion = (comment: String) => {
+    const date = moment().format('YYYYMMDD');
     db.collection('questions')
         .add({
-            createdAt: createdAt,
+            createdAt: date,
             comment: comment,
             answer: ""
         })
@@ -28,13 +30,13 @@ const sendQuestion = (createdAt: String, comment: String) => {
     logger.info('테스트');
 };
 
-router.post('/:createdAt/:comment', (req, res) => {
+router.post('/:comment', (req, res) => {
     const {
         createdAt,
         comment
     } = req.params;
 
-    sendQuestion(createdAt, comment);
+    sendQuestion(comment);
     res.sendStatus(200).end();
 });
 
