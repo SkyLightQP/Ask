@@ -2,7 +2,7 @@
     <div id="ask">
         <div class="field">
             <div class="control">
-                <textarea class="textarea" placeholder="질문할 내용을 적어주세요!"></textarea>
+                <textarea class="textarea" placeholder="질문할 내용을 적어주세요!" v-model="message"></textarea>
             </div>
         </div>
 
@@ -11,15 +11,22 @@
                 <p class="help is-dark">0 / 500</p>
             </div>
             <div class="control">
-                <button class="button is-info">보내기</button>
+                <button class="button is-info" @click="send()">보내기</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
-        name: "AskPage"
+        name: "AskPage",
+        methods: {
+            async send() {
+                await axios.post(`http://localhost:3000/question/2018-01-01/${message}`)
+            }
+        }
     }
 </script>
 
