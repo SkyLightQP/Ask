@@ -1,7 +1,7 @@
-import log4js from "log4js";
+import log4js from 'log4js';
 const logger = log4js.getLogger();
 
-import express from "express";
+import express from 'express';
 const app = express();
 
 import { Builder, Nuxt } from "nuxt";
@@ -22,7 +22,7 @@ if (nuxtConfig.dev) {
     new Builder(nuxt).build();
 }
 
-app.use("/question", firebase.router);
+app.use('/question', firebase.router);
 app.use(nuxt.render);
 
 const port = 3000;
