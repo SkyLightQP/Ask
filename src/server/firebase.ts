@@ -54,7 +54,9 @@ router.get('/', (req, res) => {
                     comment: doc.data().comment,
                     answer: doc.data().answer
                 };
-                data.push(array);
+                if(array.answer) {
+                    data.push(array);
+                }
             });
             res.send(data);
         })
