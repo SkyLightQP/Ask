@@ -33,17 +33,8 @@ const addQuestion = (comment: String) => {
         });
 };
 
-router.post('/:comment', (req, res) => {
-    const {comment} = req.params;
-
-    logger.info(`POST /question/${comment}`);
-    addQuestion(comment);
-    res.sendStatus(200).end();
-});
-
-router.get('/', (req, res) => {
-    logger.info('GET /question');
-    db.collection('questions')
+const getQuestions = async () => {
+    return await db.collection('questions')
         .get()
         .then(snapshot => {
             let data = [];
@@ -54,14 +45,30 @@ router.get('/', (req, res) => {
                     comment: doc.data().comment,
                     answer: doc.data().answer
                 };
-                if(array.answer) {
+                if (array.answer) {
                     data.push(array);
                 }
             });
-            res.send(data);
+            return data;
         })
         .catch(error => {
             logger.error('내용을 가져오는 도중에 오류가 발생하였습니다.\n', error);
+        });
+}
+
+router.post('/:comment', (req, res) => {
+    const {comment} = req.params;
+
+    logger.info(`POST /question/${comment}`);
+    addQuestion(comment);
+    res.sendStatus(200).end();
+});
+
+router.get('/', (req, res) => {
+    logger.info('GET /question');
+    getQuestions()
+        .then(result => {
+            res.send(result);
         });
 });
 
