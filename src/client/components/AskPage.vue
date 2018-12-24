@@ -2,7 +2,11 @@
     <div id="ask">
         <div class="field">
             <div class="control">
-                <textarea class="textarea" placeholder="질문할 내용을 적어주세요!" v-model="message"></textarea>
+                <textarea
+                        class="textarea"
+                        placeholder="질문할 내용을 적어주세요!"
+                        v-model="message"
+                ></textarea>
             </div>
         </div>
 
@@ -19,9 +23,14 @@
 
 <script>
     import axios from 'axios';
-
+   
     export default {
         name: "AskPage",
+        data() {
+            return {
+                message: ''
+            }
+        },
         methods: {
             async send() {
                 await axios.post(`http://localhost:3000/question/${this.message}`);
