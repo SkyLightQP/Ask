@@ -36,7 +36,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     #login {
         width: 300px;
         margin: auto;

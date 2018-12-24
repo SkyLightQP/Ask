@@ -18,7 +18,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .footer {
         padding-bottom: 3em;
     }

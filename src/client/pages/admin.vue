@@ -10,6 +10,7 @@
         </div>
         <div id="admin-deny" v-else>
             <p>접근 거부</p>
+            <p>Warning! 시공 속으로!</p>
         </div>
     </section>
 </template>
@@ -36,7 +37,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     #admin {
         margin-top: 20px;
     }

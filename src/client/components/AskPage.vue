@@ -40,7 +40,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     #ask {
         margin-top: 20px;
     }

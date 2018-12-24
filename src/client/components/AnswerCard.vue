@@ -27,7 +27,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     #time {
         text-align: right;
         font-size: 12px;
