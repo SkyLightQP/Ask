@@ -1,13 +1,11 @@
 import log4js from 'log4js';
-const logger = log4js.getLogger();
-
 import express from 'express';
-const app = express();
-
 import { Builder, Nuxt } from "nuxt";
 import nuxtConfig from '../../nuxt.config';
-
 import firebase from './firebase';
+
+const logger = log4js.getLogger();
+const app = express();
 
 if (process.env.NODE_ENV === 'production') {
     logger.level = 'ALL';

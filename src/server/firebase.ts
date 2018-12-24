@@ -1,11 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-
 import config from './config';
-
 import {express, logger} from './app';
-
 import moment from 'moment';
 
 const router = express.Router();
@@ -25,10 +22,10 @@ const addQuestion = (comment: String) => {
             comment: comment,
             answer: ""
         })
-        .then(function (docRef) {
+        .then((docRef) => {
             logger.info(`DB에 새로운 내용이 기록되었습니다. ID: ${docRef.id}`);
         })
-        .catch(function (error) {
+        .catch((error) => {
             logger.error('내용을 기록하는 도중에 오류가 발생하였습니다.\n', error);
         });
 };
@@ -40,21 +37,35 @@ const getQuestions = async () => {
             let data = [];
             snapshot.forEach(doc => {
                 let array = {
+                    id: doc.id,
                     createdAt: doc.data().createdAt,
                     answeredAt: doc.data().answeredAt,
                     comment: doc.data().comment,
                     answer: doc.data().answer
                 };
-                if (array.answer) {
-                    data.push(array);
-                }
+                data.push(array);
             });
             return data;
         })
         .catch(error => {
             logger.error('내용을 가져오는 도중에 오류가 발생하였습니다.\n', error);
         });
-}
+};
+
+const updateQuestion = (id: String, reply: String) => {
+    const date = moment().format('YYYYMMDD');
+    db.collection('questions').doc(id.toString())
+        .update({
+            answeredAt: date,
+            answer: reply
+        })
+        .then(() => {
+            logger.info(`DB에 답변을 등록하였습니다. ID: ${id}`);
+        })
+        .catch((error) => {
+            logger.error('내용을 변경하는 도중에 오류가 발생하였습니다.\n', error);
+        });
+};
 
 router.post('/:comment', (req, res) => {
     const {comment} = req.params;
@@ -72,7 +83,16 @@ router.get('/', (req, res) => {
         });
 });
 
+router.put('/:id/:reply', (req, res) => {
+    const {id, reply} = req.params;
+
+    logger.info(`PUT /question/${id}/${reply}`);
+    updateQuestion(id, reply);
+    res.sendStatus(200).end();
+});
+
 export default {
     firebase,
-    router
+    router,
+    db
 };

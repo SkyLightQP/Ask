@@ -34,6 +34,7 @@
         methods: {
             async send() {
                 await axios.post(`http://localhost:3000/question/${this.message}`);
+                this.message = '';
             }
         }
     }
