@@ -2,10 +2,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import config from './config';
-import {express, logger} from './app';
+import {logger} from './app';
 import moment from 'moment';
-
-const router = express.Router();
 
 const settings = {timestampsInSnapshots: true};
 
@@ -67,32 +65,22 @@ const updateQuestion = (id: String, reply: String) => {
         });
 };
 
-router.post('/:comment', (req, res) => {
-    const {comment} = req.params;
-
-    logger.info(`POST /question/${comment}`);
-    addQuestion(comment);
-    res.sendStatus(200).end();
-});
-
-router.get('/', (req, res) => {
-    logger.info('GET /question');
-    getQuestions()
-        .then(result => {
-            res.send(result);
+const deleteQuestion = (id: String) => {
+    db.collection('questions').doc(id.toString())
+        .delete()
+        .then(() => {
+            logger.info(`등록된 질문을 삭제하였습니다. ID: ${id}`);
+        })
+        .catch((error) => {
+            logger.error('내용을 삭제하는 도중에 오류가 발생하였습니다.\n', error);
         });
-});
-
-router.put('/:id/:reply', (req, res) => {
-    const {id, reply} = req.params;
-
-    logger.info(`PUT /question/${id}/${reply}`);
-    updateQuestion(id, reply);
-    res.sendStatus(200).end();
-});
+};
 
 export default {
     firebase,
-    router,
-    db
+    db,
+    getQuestions,
+    addQuestion,
+    updateQuestion,
+    deleteQuestion
 };

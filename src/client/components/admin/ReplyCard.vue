@@ -14,7 +14,8 @@
 
                 <div id="sub">
                     <div id="button">
-                        <button class="button is-info" @click="edit()">등록하기</button>
+                        <button class="button is-danger" @click="remove()">질문 삭제</button>
+                        <button class="button is-info" @click="update()">등록하기</button>
                     </div>
                     <span id="created-time" class="has-text-grey-light">등록 시간: {{ data.createdAt }}</span>
                 </div>
@@ -41,9 +42,14 @@
             }
         },
         methods: {
-            async edit() {
+            async update() {
                 await axios.put(`http://localhost:3000/question/${this.data.id}/${this.reply}`);
                 this.reply = '';
+                alert("답변을 등록하였습니다.");
+            },
+            async remove() {
+                await axios.delete(`http://localhost:3000/question/${this.data.id}`);
+                alert("질문을 삭제하였습니다.");
             }
         }
     }

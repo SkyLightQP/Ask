@@ -2,7 +2,7 @@ import log4js from 'log4js';
 import express from 'express';
 import { Builder, Nuxt } from "nuxt";
 import nuxtConfig from '../../nuxt.config';
-import firebase from './firebase';
+import api from './api';
 
 const logger = log4js.getLogger();
 const app = express();
@@ -20,7 +20,7 @@ if (nuxtConfig.dev) {
     new Builder(nuxt).build();
 }
 
-app.use('/question', firebase.router);
+app.use('/question', api.router);
 app.use(nuxt.render);
 
 const port = 3000;
