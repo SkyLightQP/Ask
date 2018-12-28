@@ -35,6 +35,7 @@
             async send() {
                 await axios.post(`http://localhost:3000/question/${this.message}`);
                 this.message = '';
+                alert("질문을 등록하였습니다.");
             }
         }
     }
