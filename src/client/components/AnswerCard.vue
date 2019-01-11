@@ -6,8 +6,8 @@
                 <p class="subtitle is-6"><i class="fas fa-arrow-right"></i> {{ data.answer }}</p>
 
                 <div id="time">
-                    <span id="created-time" class="has-text-grey-light">등록 시간: {{ data.createdAt }}</span>
-                    <span id="answered-time" class="has-text-grey-light">답변 시간: {{ data.answeredAt }}</span>
+                    <span id="created-time" class="has-text-grey-light">등록 날짜: {{ data.createdAt }}</span>
+                    <span id="answered-time" class="has-text-grey-light">답변 날짜: {{ data.answeredAt }}</span>
                 </div>
             </div>
         </div>
