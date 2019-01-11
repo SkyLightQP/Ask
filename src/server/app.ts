@@ -2,7 +2,9 @@ import log4js from 'log4js';
 import express from 'express';
 import { Builder, Nuxt } from "nuxt";
 import nuxtConfig from '../../nuxt.config';
-import api from './api';
+import api from './routes/api';
+import auth from './routes/auth';
+import logout from './routes/logout';
 
 const logger = log4js.getLogger();
 const app = express();
@@ -21,6 +23,8 @@ if (nuxtConfig.dev) {
 }
 
 app.use('/question', api.router);
+app.use('/login', auth.router);
+app.use('/logout', logout.router);
 app.use(nuxt.render);
 
 const port = 3000;

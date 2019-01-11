@@ -11,7 +11,8 @@ firebase.initializeApp(config);
 const db = firebase.firestore();
 db.settings(settings);
 
-const addQuestion = (comment: String) => {
+
+const addQuestion = (comment) => {
     const date = moment().format('YYYYMMDD');
     db.collection('questions')
         .add({
@@ -30,6 +31,7 @@ const addQuestion = (comment: String) => {
 
 const getQuestions = async () => {
     return await db.collection('questions')
+        .orderBy('createdAt')
         .get()
         .then(snapshot => {
             let data = [];
@@ -50,9 +52,9 @@ const getQuestions = async () => {
         });
 };
 
-const updateQuestion = (id: String, reply: String) => {
+const updateQuestion = (id, reply) => {
     const date = moment().format('YYYYMMDD');
-    db.collection('questions').doc(id.toString())
+    db.collection('questions').doc(id)
         .update({
             answeredAt: date,
             answer: reply
@@ -65,8 +67,8 @@ const updateQuestion = (id: String, reply: String) => {
         });
 };
 
-const deleteQuestion = (id: String) => {
-    db.collection('questions').doc(id.toString())
+const deleteQuestion = (id) => {
+    db.collection('questions').doc(id)
         .delete()
         .then(() => {
             logger.info(`등록된 질문을 삭제하였습니다. ID: ${id}`);

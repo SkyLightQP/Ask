@@ -17,7 +17,7 @@
             </div>
 
             <div class="navbar-end">
-                <nuxt-link class="navbar-item" to="login">
+                <nuxt-link class="navbar-item" to="/admin">
                     <i class="fas fa-sign-in-alt"></i>
                 </nuxt-link>
             </div>
