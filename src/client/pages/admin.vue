@@ -9,7 +9,7 @@
                 <label class="label">관리자 로그인</label>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input" type="email" placeholder="Email" v-model="email">
+                        <input class="input" type="email" placeholder="Email" v-model="email" @keyup.enter="signIn()">
                         <span class="icon is-small is-left">
                     <i class="fas fa-id-badge"></i>
                 </span>
@@ -18,7 +18,7 @@
 
                 <div class="field">
                     <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="Password" v-model="password">
+                        <input class="input" type="password" placeholder="Password" v-model="password" @keyup.enter="signIn()">
                         <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                 </span>

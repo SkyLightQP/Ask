@@ -6,6 +6,7 @@
                         class="textarea"
                         placeholder="질문할 내용을 적어주세요!"
                         v-model="message"
+                        @keyup.shift.enter="send()"
                 ></textarea>
             </div>
         </div>
