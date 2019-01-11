@@ -27,6 +27,7 @@
 
 <script>
     import axios from 'axios';
+    import {mapState} from 'vuex';
 
     export default {
         name: "ReplyCard",
@@ -41,15 +42,22 @@
                 type: Object
             }
         },
+        computed: mapState(['userData']),
         methods: {
             async update() {
-                await axios.put(`./question/${this.data.id}/${this.reply}`);
-                this.reply = '';
-                alert("답변을 등록하였습니다.");
+                await axios.put(`./question/${this.data.id}/${this.reply}`, {}, {headers: {'X-AskQ-Auth': this.userData}})
+                    .then(() => {
+                        this.reply = '';
+                        alert("답변을 등록하였습니다.");
+                    })
+                    .catch((error) => console.log(error));
             },
             async remove() {
-                await axios.delete(`./question/${this.data.id}`);
-                alert("질문을 삭제하였습니다.");
+                await axios.delete(`./question/${this.data.id}`, {headers: {'X-AskQ-Auth': this.userData}})
+                    .then(() => {
+                        alert("질문을 삭제하였습니다.");
+                    })
+                    .catch((error) => console.log(error));
             }
         }
     }
