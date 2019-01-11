@@ -23,7 +23,7 @@
 
 <script>
     import axios from 'axios';
-   
+
     export default {
         name: "AskPage",
         data() {
@@ -33,7 +33,7 @@
         },
         methods: {
             async send() {
-                await axios.post(`http://localhost:3000/question/${this.message}`);
+                await axios.post(`./question/${this.message}`);
                 this.message = '';
                 alert("질문을 등록하였습니다.");
             }

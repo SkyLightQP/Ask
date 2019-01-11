@@ -22,7 +22,7 @@
             }
         },
         mounted() {
-            axios.get('http://localhost:3000/question')
+            axios.get('./question')
                 .then((result) => {
                     this.answers = result.data
                 });

@@ -43,12 +43,12 @@
         },
         methods: {
             async update() {
-                await axios.put(`http://localhost:3000/question/${this.data.id}/${this.reply}`);
+                await axios.put(`./question/${this.data.id}/${this.reply}`);
                 this.reply = '';
                 alert("답변을 등록하였습니다.");
             },
             async remove() {
-                await axios.delete(`http://localhost:3000/question/${this.data.id}`);
+                await axios.delete(`./question/${this.data.id}`);
                 alert("질문을 삭제하였습니다.");
             }
         }
