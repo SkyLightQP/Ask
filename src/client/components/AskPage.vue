@@ -33,9 +33,12 @@
         },
         methods: {
             async send() {
-                await axios.post(`./question/${this.message}`);
-                this.message = '';
-                alert("질문을 등록하였습니다.");
+                await axios.post(`./question/${this.message}`)
+                    .then(() => {
+                        this.message = '';
+                        alert("질문을 등록하였습니다.");
+                    })
+                    .catch((error) => console.log(error));
             }
         }
     }

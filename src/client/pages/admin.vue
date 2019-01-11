@@ -72,6 +72,7 @@
                                     break;
                             }
                         })
+                        .catch((error) => console.log(error));
                 }
                 else alert('입력칸이 비어있습니다.');
             }
