@@ -17,10 +17,6 @@ module.exports = {
         {src: '../node_modules/@fortawesome/fontawesome-free/css/all.css' }
     ],
 
-    build: {
-        vendor: ['axios']
-    },
-
     buildDir: 'dist/client',
     srcDir: 'src/client'
 }
