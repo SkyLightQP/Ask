@@ -38,7 +38,7 @@
 <script>
     import ReplyPage from "../components/admin/ReplyPage";
     import axios from 'axios';
-    import { mapState } from 'vuex'
+    import { mapState } from 'vuex';
 
     export default {
         name: "admin",
@@ -52,7 +52,6 @@
         computed: mapState(['userData']),
         methods: {
             signIn() {
-                console.log("B: " + this.userData);
                 if(this.email && this.password) {
                     axios.post(`./login/${this.email}/${this.password}`)
                         .then((res) => {
