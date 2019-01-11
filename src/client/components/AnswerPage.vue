@@ -3,7 +3,7 @@
         <AnswerCard
                 v-for="answer in answers"
                 v-if="answer.answeredAt"
-                :key="answer.createdAt"
+                :key="answer.answer"
                 :data="answer"
         />
     </div>

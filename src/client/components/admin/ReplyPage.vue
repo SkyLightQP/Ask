@@ -5,7 +5,7 @@
         <ReplyCard
                 v-for="reply in replies"
                 v-if="!reply.answeredAt"
-                :key="reply.createdAt"
+                :key="reply.id"
                 :data="reply"
         />
     </div>
