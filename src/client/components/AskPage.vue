@@ -13,10 +13,10 @@
 
         <div class="field is-grouped is-grouped-right">
             <div class="control">
-                <p class="help is-dark">0 / 500</p>
+                <p id="count" class="help is-dark">{{ message.length }} / 500</p>
             </div>
             <div class="control">
-                <button class="button is-info" @click="send()">보내기</button>
+                <button class="button is-info" @click="send()" :disabled="checkLength()">보내기</button>
             </div>
         </div>
     </div>
@@ -40,6 +40,9 @@
                         alert("질문을 등록하였습니다.");
                     })
                     .catch((error) => console.log(error));
+            },
+            checkLength() {
+                return this.message.length > 500;
             }
         }
     }
