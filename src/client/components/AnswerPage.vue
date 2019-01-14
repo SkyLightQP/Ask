@@ -2,8 +2,8 @@
     <div id="answer">
         <AnswerCard
                 v-for="answer in answers"
-                v-if="answer.answeredAt"
                 :key="answer.answer"
+                v-if="answer.answeredAt"
                 :data="answer"
         />
     </div>

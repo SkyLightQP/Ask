@@ -12,7 +12,7 @@ const db = firebase.firestore();
 db.settings(settings);
 
 
-const addQuestion = (comment) => {
+const addQuestion = (comment: string) => {
     const date = moment().format('YYYYMMDD');
     db.collection('questions')
         .add({
@@ -52,9 +52,28 @@ const getQuestions = async () => {
         });
 };
 
+const getQuestion = async (id: string) => {
+    return await db.collection('questions').doc(id)
+        .get()
+        .then(doc => {
+            let data = {
+                id: doc.id,
+                createdAt: doc.data().createdAt,
+                answeredAt: doc.data().answeredAt,
+                comment: doc.data().comment,
+                answer: doc.data().answer
+            };
+            return data;
+        })
+        .catch(error => {
+            logger.error('내용을 가져오는 도중에 오류가 발생하였습니다.\n', error);
+        });
+};
+
 export default {
     firebase,
     db,
     getQuestions,
+    getQuestion,
     addQuestion
 };

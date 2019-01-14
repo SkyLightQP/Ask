@@ -20,6 +20,16 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+
+    logger.info(`GET /question/${id}`);
+    firebase.getQuestion(id)
+        .then(result => {
+            res.send(result);
+        });
+});
+
 export default {
     router
 };
