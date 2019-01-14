@@ -4,7 +4,5 @@ export default {
     databaseURL: 'DATABASE_URL',
     projectId: 'PROJECT_ID',
     storageBucket: 'STORAGE_BUCKET',
-    messagingSenderId: 'MESSAGING_SENDER_ID',
-
-    adminUid: ""
+    messagingSenderId: 'MESSAGING_SENDER_ID'
 }

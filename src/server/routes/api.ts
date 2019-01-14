@@ -20,34 +20,6 @@ router.get('/', (req, res) => {
         });
 });
 
-router.put('/:id/:reply', (req, res) => {
-    const {id, reply} = req.params;
-    const admin = req.headers['x-askq-auth'];
-
-    if(admin !== undefined && admin === config.adminUid) {
-        logger.info(`PUT /question/${id}/${reply}`);
-        firebase.updateQuestion(id, reply);
-        res.sendStatus(200).end();
-        return;
-    }
-
-    res.sendStatus(401).end();
-});
-
-router.delete('/:id', (req, res) => {
-    const {id} = req.params;
-    const admin = req.headers['x-askq-auth'];
-
-    if(admin !== undefined && admin === config.adminUid) {
-        logger.info(`DELETE /question/${id}`);
-        firebase.deleteQuestion(id);
-        res.sendStatus(200).end();
-        return;
-    }
-
-    res.sendStatus(401).end();
-});
-
 export default {
     router
 };

@@ -52,37 +52,9 @@ const getQuestions = async () => {
         });
 };
 
-const updateQuestion = (id, reply) => {
-    const date = moment().format('YYYYMMDD');
-    db.collection('questions').doc(id)
-        .update({
-            answeredAt: date,
-            answer: reply
-        })
-        .then(() => {
-            logger.info(`DB에 답변을 등록하였습니다. ID: ${id}`);
-        })
-        .catch((error) => {
-            logger.error('내용을 변경하는 도중에 오류가 발생하였습니다.\n', error);
-        });
-};
-
-const deleteQuestion = (id) => {
-    db.collection('questions').doc(id)
-        .delete()
-        .then(() => {
-            logger.info(`등록된 질문을 삭제하였습니다. ID: ${id}`);
-        })
-        .catch((error) => {
-            logger.error('내용을 삭제하는 도중에 오류가 발생하였습니다.\n', error);
-        });
-};
-
 export default {
     firebase,
     db,
     getQuestions,
-    addQuestion,
-    updateQuestion,
-    deleteQuestion
+    addQuestion
 };
