@@ -31,7 +31,7 @@ const addQuestion = (comment) => {
 
 const getQuestions = async () => {
     return await db.collection('questions')
-        .orderBy('createdAt')
+        .orderBy('createdAt', 'desc')
         .get()
         .then(snapshot => {
             let data = [];
