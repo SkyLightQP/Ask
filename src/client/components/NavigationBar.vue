@@ -10,16 +10,6 @@
 
 <script>
     export default {
-        name: "NavigationBar",
-        data() {
-            return {
-                isActive: false
-            }
-        },
-        methods: {
-            setActive() {
-                this.isActive = !this.isActive
-            }
-        }
+        name: "NavigationBar"
     }
 </script>
