@@ -1,6 +1,6 @@
 import firebase from '../firebase';
 import {express, logger} from '../app';
-import config from '../config';
+import config from '../config/config';
 
 const router = express.Router();
 

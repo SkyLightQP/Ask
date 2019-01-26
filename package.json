@@ -25,6 +25,7 @@
     "moment": "^2.23.0",
     "node-sass": "^4.11.0",
     "nuxt": "^2.3.4",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "typescript": "^3.2.4"
   }
 }

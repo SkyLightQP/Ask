@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import config from './config';
+import config from './config/config';
 import {logger} from './app';
 import moment from 'moment';
 

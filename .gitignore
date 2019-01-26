@@ -3,5 +3,3 @@
 node_modules/
 
 dist/
-
-src/server/config.ts
