@@ -66,7 +66,7 @@ const getQuestion = async (id: string) => {
             return data;
         })
         .catch(error => {
-            logger.error('내용을 가져오는 도중에 오류가 발생하였습니다.\n', error);
+            // console.log('내용을 가져오는 도중에 오류가 발생하였습니다.\n', error);
         });
 };
 

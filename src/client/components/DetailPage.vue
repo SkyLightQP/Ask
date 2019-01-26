@@ -1,9 +1,6 @@
 <template>
     <section>
-        <div class="notification" style="display: none">
-            복사 완료!
-        </div>
-        <div class="card">
+        <div class="card" v-if="data">
             <div class="card-content">
                 <p class="title is-5"><i class="fas fa-question"></i> {{ data.comment }}</p>
                 <p class="subtitle is-6"><i class="fas fa-arrow-right"></i> {{ data.answer }}</p>
@@ -14,6 +11,9 @@
                     <a @click="copy()"><i class="fas fa-copy"></i> 주소 복사</a>
                 </div>
             </div>
+        </div>
+        <div v-else>
+            <p>존재하지 않는 답변입니다!</p>
         </div>
     </section>
 </template>
@@ -36,12 +36,14 @@
                 temp.select();
                 document.execCommand('copy');
                 document.body.removeChild(temp);
+
+                alert('복사되었습니다!')
             }
         }
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     #more {
         text-align: right;
         font-size: 12px;
